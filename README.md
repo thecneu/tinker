@@ -1,1 +1,4 @@
 # tinker
+
+## todo
+* inputs
