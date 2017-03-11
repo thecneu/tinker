@@ -13,6 +13,11 @@ body {
   height: 80px;
 }
 
+@keyframes app-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .app-header {
   background-color: #222;
   height: 150px;
@@ -24,7 +29,20 @@ body {
   font-size: large;
 }
 
-@keyframes app-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+a {
+  margin: 0 40px;
+  color: #fff;
+  text-decoration: none;
+}
+
+a.link {
+  color: lightblue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.active {
+  text-decoration: underline;
 }
