@@ -6,6 +6,7 @@ const Exercises = ({location: { pathname }, children}) => (
     <h2>Exercises</h2>
     {pathname.indexOf('create') < 0 ? <Link className="link" activeClassName="active" to="/exercises/create">Create Exercise</Link> : false}
     {children}
+    <button className="action"><Link to="/exercises/create" className="glyphicon glyphicon-plus-sign" /></button>
   </article>
 )
 

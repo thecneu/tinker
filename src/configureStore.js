@@ -1,4 +1,5 @@
 import { createStore } from 'redux'
+import api from './api'
 import reducer from './reducers'
 
 const configureStore = () => {

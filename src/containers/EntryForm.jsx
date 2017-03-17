@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createEntry } from '../actions'
 import { getExerciseOptions } from '../reducers'
+import Input from '../components/Input'
+import Select from '../components/Select'
 
 class EntryForm extends React.Component {
   state = { useCardio: true }
@@ -9,46 +11,44 @@ class EntryForm extends React.Component {
   toggleUseCardio = () => this.setState({useCardio: !this.state.useCardio})
 
   onSubmit = (e) => {
-    const form = e.currentTarget
     const data = this.state.useCardio ? {
       type: 'cardio',
-      time: form.time.value,
-      distance: form.distance.value,
-      calories: form.distance.value
+      time: this.state.time,
+      distance: this.state.distance,
+      calories: this.state.calories
     } : {
       type: 'exercise',
-      exercise: form.exercise.value,
-      weight: form.weight.value
+      exercise: this.state.exercise,
+      weight: this.state.weight
     }
 
     e.preventDefault()
     this.props.createEntry(data)
   }
 
-  render() {
-    const cardio = (
-      <div className="form-group">
-        <input required type="text" name="time" placeholder="Time" />
-        <input required type="text" name="distance" placeholder="Distance" />
-        <input required type="text" name="calories" placeholder="Calories" />
-      </div>
-    )
+  onInputChange = (e) => {
+    const input = e.currentTarget
+    this.setState({[input.name]: input.value})
+  }
 
-    const exercise = (
-      <div className="form-group">
-        <select required name="exercise">
-          {this.props.exercises.map(exercise => <option value={exercise.name}>{exercise.name}</option>)}
-        </select>
-        <input required type="text" name="weight" placeholder="Weight" />
-      </div>
-    )
+  render() {
+    const cardio = [
+      <Input required onInputChange={this.onInputChange} key="time" name="time" label="Time"  />,
+      <Input required onInputChange={this.onInputChange} key="distance" name="distance" label="Distance" />,
+      <Input required onInputChange={this.onInputChange} key="calories" name="calories" label="Calories" />
+    ]
+
+    const exercise = [
+      <Select required onInputChange={this.onInputChange} name="exercise" label="Exercise" options={this.props.exercises} key="exercise" />,
+      <Input required onInputChange={this.onInputChange} name="weight" label="Weight" key="weight" />
+    ]
 
     return (
       <form required onSubmit={this.onSubmit}>
-        <select name="type" onChange={this.toggleUseCardio}>
+        <Select name="type" onChange={this.toggleUseCardio}>
           <option value="cardio">Cardio</option>
           <option value="exercise">Exercise</option>
-        </select>
+        </Select>
 
         {this.state.useCardio ? cardio : exercise}
 
@@ -58,7 +58,9 @@ class EntryForm extends React.Component {
   }
 }
 
+const mapStateToProps = ({exercises}) => ({ exercises: getExerciseOptions(exercises) })
+
 export default connect(
-  ({exercises}) => ({ exercises: getExerciseOptions(exercises) }),
+  mapStateToProps,
   { createEntry }
 )(EntryForm)

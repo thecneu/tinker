@@ -1,4 +1,10 @@
+import React from 'react'
 import { connect } from 'react-redux'
-import List from '../components/List'
 
-export default connect(({exercises}) => ({exercises}))(List)
+const List = () => (
+  <h3>List</h3>
+)
+
+const mapStateToProps = ({exercises}) => ({exercises})
+
+export default connect(mapStateToProps)(List)
