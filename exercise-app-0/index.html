@@ -81,8 +81,8 @@
 </div>
 </script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://underscorejs.org/underscore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6/underscore-min.js"></script>
 <script src="js/shortcuttosize.js"></script>
 <script src="js/datastore.js"></script>
 <script type="text/javascript">
@@ -174,13 +174,12 @@ App.initCalendar = function() {
 	if( this.startWeek == undefined ) return;
 	this.week = Date.weeknum - this.startWeek;
 	this.phase = this.week / 4;
-	var template = _.template( this.templates.mainTemplate, {
+	var template = _.template(this.templates.mainTemplate)({
 		ip : this.week,
 		iw : this.phase,
 		days : this.days
 	});
-
-	$('#app').html( template );
+	$('#app').html(template);
 };
 
 App.initData = function() {
@@ -247,7 +246,7 @@ METHODS
 */
 
 App.showTitles = function() {
-	var template = _.template( this.templates.workoutTitleTemplate, {
+	var template = _.template( this.templates.workoutTitleTemplate )({
 		workouts : this.routine.phases[ this.phase ].weeks[ this.week ].workouts,
 		cardio : this.cardio,
 		active : this.activeWorkouts
@@ -299,7 +298,7 @@ App.removeWorkout = function( $workout ) {
 
 App.showWorkout = function($el) {
 	if( $el.hasClass('cardio-title') ) {
-		var template = _.template( this.templates.cardioTemplate, {
+		var template = _.template( this.templates.cardioTemplate )({
 			cardio  : $el.html(),
 			phase   : this.phase,
 			week    : this.week,
@@ -307,7 +306,7 @@ App.showWorkout = function($el) {
 		});
 	}
 	else {
-		var template = _.template( this.templates.workoutTemplate, {
+		var template = _.template( this.templates.workoutTemplate )({
 			workout : this.routine.phases[ this.phase ].weeks[ this.week ].workouts[$el.attr('data-id')],
 			phase   : this.phase,
 			week    : this.week,
@@ -334,21 +333,21 @@ App.getCardio = function( $day ) {
 
 
 App.test = function() {
-	var template = _.template( this.templates.workoutTemplate, {
-		workout : this.routine.phases[ 0 ].weeks[ 0 ].workouts[0],
+	var template = _.template( this.templates.workoutTemplate )({
+		workout : this.routine.phases[0].weeks[0].workouts[0],
 		phase   : 0,
 		week    : 0,
 		wonum 	: 0,
 		partial: function( id, vars ) {
 			vars.partial = this.partial;
-			return _.template( $(id).html(), vars );
+			return _.template( $(id).html() )(vars);
 		}
 	});
 	$('#test').html( template );
 };
 $(function() {
-	App.init();
-	//App.test();
+	// App.init();
+	App.test();
 })
 </script>
 </body>

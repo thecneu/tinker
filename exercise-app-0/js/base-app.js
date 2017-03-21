@@ -5,7 +5,7 @@ var Utils = (function() {
 	var todayDate = d.getDate();
 	var begWeekDate = todayDate - todayNum;
 
-	function getWeek() { 
+	function getWeek() {
 		var d = new Date();
 		var dayNr = (d.getDay() + 6) % 7;
 		d.setDate(d.getDate() - dayNr + 3);
@@ -36,25 +36,26 @@ var Routines = {
 	weekTableTemplate: $('#week-table-template').html(),
 
 	render: function( $el ) {
-		var template = _.template( this.weekTemplate, {
+		var template = _.template( this.weekTemplate )({
 			phase: routine.phases[0],
-			weeks: routine.phases[0].week, 
+			weeks: routine.phases[0].weeks,
 
 			partial: function( id, vars ) {
 				vars.partial = this.partial;
-				return _.template( $(id).html(), vars );
+				return _.template( $(id).html() )(vars);
 			}
 		});
-		
-		var template2 = _.template( this.weekTableTemplate, {
+
+		var template2 = _.template( this.weekTableTemplate )({
 			phase: routine.phases[0],
-			weeks: routine.phases[0].week, 
+			weeks: routine.phases[0].weeks,
 
 			partial: function( id, vars ) {
 				vars.partial = this.partial;
-				return _.template( $(id).html(), vars );
+				return _.template( $(id).html() )(vars);
 			}
 		});
+
 		$el.html( template );
 		$el.html( template2 );
 	}
