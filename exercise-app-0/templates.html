@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title></title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:400,700,600">
+</head>
+
+<body>
+
+<div id="week"></div>
+
+<div id="exerciseContainer"></div>
+
+
+
+
+
+
+
+
+<script type="text/template" id="exercise-card">
+<div data-id="<%= ei %>"> 
+	<div><%= e.name %></div>
+	<div><img src="<%= e.image %>" /></div>
+	<div><%= e.sets %> x <%= e.reps %></div>
+</div>
+</script>
+
+<script type="text/template" id="exercise-template">
+<li data-id="<%= ei %>"> 
+	<div><%= e.name %></div>
+	<div><img src="<%= e.image %>" /></div>
+	<div><%= e.sets %> x <%= e.reps %></div>
+</li>
+</script>
+
+<script type="text/template" id="workout-template">
+<h2><!-- Workout <%= wo.number %>:--> <%= wo.title %></h2>
+<ul class="exercises">
+	<% _.each(wo.exercises, function(exercise, index) { %>
+		<%= partial('#exercise-template', {e: exercise, ei:index}) %>
+	<% }); %>
+</ul>
+</script>
+
+<script type="text/template" id="workout-table-template">
+<table>
+<caption><%= wo.title %></caption>
+<thead>
+	<th>exercise</th><th>sets x reps</th><th>weight</th>
+</thead>
+<tbody>
+	<% _.each(wo.exercises, function(exercise, index) { %>
+		<%= partial('#exercise-table-template', {e: exercise, ei:index}) %>
+	<% }); %>
+</tbody>
+</script>
+
+<script type="text/template" id="exercise-table-template">
+<tr data-id="<%= ei %>">
+	<td><%= e.name %><img src="<%= e.image %>" /></td>
+	<td><%= e.sets %> x <%= e.reps %></td>
+	<td></td>
+</tr>
+</script>
+
+<script type="text/template" id="week-table-template">
+<%= partial( '#workout-template', {wo:weeks[0].workouts[0], wi:0} ) %>
+</script>
+
+<script type="text/template" id="week-template">
+<% _.each(weeks, function(wk) { %>
+	<h1><%= phase.title %>: Week <%= wk.number %></h1>
+	<ul class="workouts">
+		<% _.each( wk.workouts, function(workout, index) { %>
+			<li data-id="<%= index %>"><%= partial( '#workout-template', {wo:workout, wi:index} ) %></li>
+		<% }); %>
+	</ul>
+<% }); %>
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="shortcuttosize.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

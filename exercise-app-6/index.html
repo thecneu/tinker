@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div id="overlay"></div>
+<div id="app"></div>
+
+<script type="text/x-handlebars" id="main-template">
+<div id="container">
+	<header>
+		<h1 class="workout-weeks">Phase {{ip}}: <span>Week {{iw}}</span></h1>
+	</header>
+	<ul id="days">
+		{{#each days}}
+		<li class="day" data-id="{{@index}}">
+			<div class="dayName">{{this}}</div>
+			<div class="dayContent"></div>
+		</li>  
+		{{/each}}
+	</ul>
+	<input type="button" value="Clear" id="clear" />
+</div>	
+</script>
+
+<script type="text/x-handlebars" id="daycontent-template">
+{{#each workout}}
+	{{#ift type}}
+		<div data-title="{{title}}" class="workout-title"><div class="delete"></div>{{title}}</div>
+	{{else}}
+		<div data-title="{{title}}" class="workout-title cardio-title{{classtime time}}">
+			<div class="delete"></div><span>{{title}}</span>
+			<div class="info added">
+				{{#if time}}
+					{{time}}:00 {{distance}}m {{calories}}c
+				{{/if}}
+			</div>
+		</div>
+	{{/ift}}
+{{/each}}
+</script>
+
+<script type="text/x-handlebars" id="workout-title-template">
+<div id="workout-titles" class="cardio">
+	{{#each workouts}}
+		<div data-title="{{this}}" class="workout-title"><div class="delete"></div>{{this}}</div>
+	{{/each}}
+	<div class="hr"></div>
+	<div class="workout-title cardio-title running">Running</div>
+	{{#each cardio}}
+		<div data-title="{{this}}" class="workout-title cardio-title"><div class="delete"></div><span>{{this}}</span><div class="info" ></div>
+		</div>
+	{{/each}}
+</div>
+</script>
+
+<script type="text/x-handlebars" id="workout-template">
+<div id="workout-titles">
+	<div class="workout-card">
+		<h2>{{title}}</h2>
+		<ul>
+			{{#each exercises}}
+				{{> exercise }}
+			{{/each}}
+		</ul>
+	</div>
+</div>    
+</script>
+
+<script type="text/x-handlebars" id="exercise-template">
+<li data-id="{{@index}}"> 
+	<div class="exname" data-title="{{name}}">{{name}}</div>
+	<div class="sets">{{sets}} x {{reps}}</div>
+	<div><img src="{{image}}" /></div>
+	<div class="weight">
+		<div contentEditable="true">
+			{{#if weight}}
+				{{weight}}lbs
+			{{/if}}
+		</div>
+	</div>
+</li>   
+</script>
+
+<script type="text/x-handlebars" id="cardio-template">
+<div id="workout-titles" class="cardio">	
+	<div class="cardio-card">
+		<h2>{{title}}</h2>
+		<table cellpadding="5" cellspacing="0">
+			<tr>
+				<th>Time</th>
+				<th>Distance</th>
+				<th>Calories</th>
+			</tr>
+			<tr>
+				<td><input type="text" class="time" value="{{time}}"></input></td>
+				<td><input type="text" class="distance" value="{{distance}}"></input></td>
+				<td><input type="text" class="calories" value="{{calories}}"></input></td>
+			</tr>
+		</table>
+		<button id="cardioApply">Apply</button>
+	</div>  
+</div> 
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="js/handlebars-v1.3.0.js"></script>
+<script src="js/shortcuttosize.js"></script>
+<script src="js/datastore.js"></script>
+<script src="js/app.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/helpers.js"></script>
+</body>
+</html>

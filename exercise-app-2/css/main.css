@@ -1,0 +1,181 @@
+* {margin:0;padding:0;outline:0;border:0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+button {background: transparent;color:#fff;font-weight: bold;}
+button:hover {color:#ccc;}
+body {
+	font: 14px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}	
+#container {
+	width: 90%;
+	margin: 0 auto;
+}
+header h1 {
+	margin-top: 23px;
+	margin-left: 8px;
+}
+header h1 span {
+	font-weight: 300;
+}
+
+#days {
+	width: 100%;
+	overflow: hidden;
+	margin: 8px 0;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	 user-select: none;
+}
+	#days li {
+		list-style:none;
+		float: left;
+		width: 14.28571428571429%;
+		text-align: center;
+		border-right: 1px solid #333;
+		font-size: 1.7em;
+		line-height: 1.4em;
+		text-transform: capitalize;
+	}
+		#days li:first-child {
+			border-left: 1px solid #333;
+		}
+		#days li > div:first-child {
+			border-bottom: 1px solid #333
+		}
+		#days .dayContent {
+			padding: 16px 4px;
+			height: 85%;
+		}
+			#days .dayContent .workout-title {
+				cursor: pointer;
+				font-size: 13px;
+				background: #1c1c1c;
+				color: #fcfcfc;
+				padding: 2px 4px;
+				margin-bottom: 15px; 
+				border-radius: 4px;
+				position: relative;
+			}
+			#days .dayContent .workout-title .delete {
+				position: absolute;
+				right: 4px;
+				top: -8px;
+				display: block;
+			}
+			.delete:hover {
+				color: red;
+			}
+			#overlay .delete {display: none;}
+			#days .dayContent .info {display: none;}
+			#days .dayContent .info.added {
+				height: 0;
+				margin-bottom: 0;
+				overflow: hidden;
+				padding: 0;
+				-webkit-transition: all .15s ease-out;
+				   -moz-transition: all .15s ease-out;
+				    -ms-transition: all .15s ease-out;
+				     -o-transition: all .15s ease-out;
+				        transition: all .15s ease-out;
+			}
+			#days .dayContent:hover .info.added {
+				margin-top: 8px;
+				height: auto;
+			}
+
+#overlay {
+	top: 0;
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .84);
+	z-index: 9999;
+}
+	#overlay > div {
+		position: absolute;
+		width: 716px;
+		margin-left: -358px;
+		top: 10%;
+		left: 50%;
+		
+		background: #333;
+		border-radius: 4px;
+		border: 1px solid #fff;
+
+		padding: 23px;
+		color: #fff;
+		text-align: center;
+	}
+
+
+	#overlay .workout-title {
+		cursor: pointer;
+		display: inline-block;
+		margin: 8px;
+		background: #1c1c1c;
+		border: 1px solid #fff;
+		border-radius: 4px;
+		padding: 8px;
+	}
+
+		.hr {
+			width: 100%;
+			height: 23px;
+			display: block;
+		}
+
+	.workout-card {
+		-webkit-user-select: none;
+		-moz-user-select: -moz-none;
+	 	user-select: none;
+	}
+	
+	.workout-card ul {
+		height: 600px;
+	 	overflow-y: scroll;
+	 	margin: 15px auto;
+	}
+
+	.workout-card li {
+		list-style: none;
+		text-align: left;
+		overflow: hidden;
+	}
+
+		.workout-card li > div {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 4px 15px;
+			width: 135px;
+			text-align: center;
+		}
+		.workout-card .sets {
+			width: 60px;
+		}
+
+	.workout-card .weight {
+		cursor: pointer;
+		text-align: left;
+		margin-left: 23px;
+		line-height: 23px;
+	}
+	.workout-card .weight:hover {
+		border: 1px dashed;
+	}
+		.workout-card .weight div {
+			padding: 4px 8px;
+		}
+
+	.cardio-card table {
+		width: 100%;
+		margin: 42px auto 8px;
+	}
+
+	.cardio-card input {
+		background: transparent;
+		padding: 8px;
+		color: #fff;
+		text-align: center;
+		margin-top: 8px;
+	}

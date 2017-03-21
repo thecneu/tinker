@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div id="overlay"></div>
+<div id="app"></div>	
+<div id="test"></div>
+<script type="text/template" id="main-template">
+<div id="container">
+	<header>
+		<h1 class="workout-weeks" data-phase="<%= ip %>" data-week="<%= iw %>">Phase <%= ip + 1 %>: <span>Week <%= iw + 1 %></span></h1>
+	</header>
+	<ul id="days">
+	<% _.each( days, function( day, di ) { %>
+		<li class="day" data-id="<%= di %>">
+			<div class="dayName"><%= day %></div>
+			<div class="dayContent"></div>
+		</li>  
+	<% }); %>
+	</ul>
+</div>
+</script>
+
+<script type="text/template" id="workout-title-template">
+	<% _.each( workouts, function( workout, wi ) { %>
+		<% if ( !_.contains(active, workout.title) ) { %>
+			<div data-id="<%= wi %>" data-title="<%= workout.title %>" class="workout-title"><div class="delete">x</div><%= workout.title %></div>
+		<% } %>
+	<% }); %>
+	<div class="hr"></div>
+	<div class="workout-title cardio-title running">Running</div>
+	<% _.each( cardio, function( c, ci ) { %>
+		<div data-title="<%= c %>" class="workout-title cardio-title"><div class="delete">x</div><%= c %><!--<div class="info" ></div>-->
+		</div>
+	<% }); %>
+</script>
+
+<script type="text/template" id="daycontent-template">
+	<% _.each( workouts, function( workout ) { %>
+		<% if ( workout.type == 'workout' ) { %>
+			<div data-id="<%= workout.wonum %>" data-title="<%= workout.title %>" class="workout-title"><div class="delete">x</div><%= workout.title %></div>
+		<% } else { %>
+			<div data-title="<%= workout.title %>" class="workout-title cardio-title"><div class="delete">x</div><%= workout.title %></div>
+		<% } %>
+	<% }); %>
+</script>
+
+<script type="text/template" id="exercise-template">
+<li data-id="<%= ei %>"> 
+	<div class="exname" data-title="<%= ex.name %>"><%= ex.name %></div>
+	<div class="sets"><%= ex.sets %> x <%= ex.reps %></div>
+	<div><img src="<%= ex.image %>" /></div>
+	<div class="weight"><div contentEditable="true"><%= ex.weight %></div></div>
+</li>
+</script>
+
+<script type="text/template" id="workout-template">
+<div class="workout-card" data-wonum="<%= wonum %>">
+	<h2><%= workout.title %></h2>
+	<ul>
+		<% _.each(workout.exercises, function(exercise, i) { %>
+			<%= partial('#exercise-template', {ex: exercise, ei:i}) %>
+		<% }); %>
+	</ul>
+</div>
+</script>
+
+<script type="text/template" id="cardio-template">
+<div class="cardio-card">
+	<h2><%= cardio %></h2>
+	<table cellpadding="5" cellspacing="0">
+		<tr>
+			<th>Time</th>
+			<th>Distance</th>
+			<th>Calories</th>
+		</tr>
+		<tr>
+			<td><input type="text" class="time"></input></td>
+			<td><input type="text" class="distance"></input></td>
+			<td><input type="text" class="calories"></input></td>
+		</tr>
+	</table>
+	<button id="cardioApply">Apply</button>
+</div>
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="js/shortcuttosize.js"></script>
+<script src="js/datastore.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
