@@ -16,6 +16,11 @@ export const updateExercise = (id, exercise) => ({
   }
 })
 
+export const deleteExercise = (id) => ({
+  type: 'DELETE_EXERCISE',
+  payload: id
+})
+
 export const createEntry = (entry) => ({
   type: 'CREATE_ENTRY',
   payload: {
