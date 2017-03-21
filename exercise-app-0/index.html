@@ -8,7 +8,7 @@
 <body>
 
 <div id="overlay"></div>
-<div id="app"></div>	
+<div id="app"></div>
 <div id="test"></div>
 <script type="text/template" id="main-template">
 <div id="container">
@@ -20,7 +20,7 @@
 		<li class="day" data-id="<%= di %>">
 			<div class="dayName"><%= day %></div>
 			<div class="dayContent"></div>
-		</li>  
+		</li>
 	<% }); %>
 	</ul>
 </div>
@@ -44,7 +44,7 @@
 </script>
 
 <script type="text/template" id="exercise-template">
-<li data-id="<%= ei %>"> 
+<li data-id="<%= ei %>">
 	<div class="exname"><%= ex.name %></div>
 	<div class="sets"><%= ex.sets %> x <%= ex.reps %></div>
 	<div><img src="<%= ex.image %>" /></div>
@@ -87,7 +87,7 @@
 <script src="js/datastore.js"></script>
 <script type="text/javascript">
 
-var App = { 
+var App = {
 	days : ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
 	templates : {
 		cardioTemplate : $('#cardio-template').html(),
@@ -95,7 +95,7 @@ var App = {
 		workoutTemplate : $('#workout-template').html(),
 		workoutTitleTemplate : 	$('#workout-title-template').html(),
 		mainTemplate : $('#main-template').html()
-	}, 
+	},
 	cardio : cardio,
 	routine : routine,
 	activeWorkouts : [],
@@ -123,7 +123,7 @@ App.Utils.close = function(e) {
 	if( e ) {
 		if( $( e.target ).attr('id') == 'overlay' ) {
 			$('#overlay').empty().fadeOut();
-		}	
+		}
 	}
 	else {
 		$('#overlay').empty().fadeOut();
@@ -174,17 +174,17 @@ App.initCalendar = function() {
 	if( this.startWeek == undefined ) return;
 	this.week = Date.weeknum - this.startWeek;
 	this.phase = this.week / 4;
-	var template = _.template( this.templates.mainTemplate, { 
-		ip : this.week, 
-		iw : this.phase, 
-		days : this.days 
+	var template = _.template( this.templates.mainTemplate, {
+		ip : this.week,
+		iw : this.phase,
+		days : this.days
 	});
 
 	$('#app').html( template );
 };
 
 App.initData = function() {
-	// retrieve data from datastore 
+	// retrieve data from datastore
 	// figure out week and phase
 	// populate accordingly - another function
 	//DataStore.add(test);
@@ -207,7 +207,7 @@ App.initListeners = function() {
 	$(document).on('focus', '.weight, .cardio-card input', function() {
 		$this = $(this);
 		$(document).on('keydown', function(e) {
-			if( e.keyCode == 13 ) { 
+			if( e.keyCode == 13 ) {
 				$this.trigger('blur');
 				return false;
 			}
@@ -227,18 +227,18 @@ App._data = function( $el ) {
 			name : $el.attr('data-title'),
 			daynum : $el.parents('.day').attr('data-id'),
 			weeknum : Date.weeknum
-		};	
+		};
 	}
 	else {
 		var data = {
 			type : 'workout',
 			wonum : $el.attr('data-wonum'),
-			name : $el.attr('data-title'),			
+			name : $el.attr('data-title'),
 			daynum : $el.parents('.day').attr('data-id'),
 			weeknum : Date.weeknum
 		}
 	}
-	
+
 	return data;
 };
 
@@ -281,13 +281,13 @@ App.addWorkout = function( $workout ) {
 	$el.append( $workout );
 
 	if( !$workout.hasClass('cardio-title') ) {
-		this.activeWorkouts.push( $workout.text() );	
+		this.activeWorkouts.push( $workout.text() );
 	}
 	if( this.Utils.ready ) {
 		this.Utils.refresh();
 		this.Utils.close();
 	}
-	
+
 	DataStore.add( this._data($workout) );
 };
 
@@ -304,7 +304,7 @@ App.showWorkout = function($el) {
 			phase   : this.phase,
 			week    : this.week,
 			cnum 	: $el.attr('data-id'),
-		});	
+		});
 	}
 	else {
 		var template = _.template( this.templates.workoutTemplate, {
@@ -316,9 +316,9 @@ App.showWorkout = function($el) {
 				vars.partial = this.partial;
 				return _.template( $(id).html(), vars );
 			}
-		});	
+		});
 	}
-	 
+
 	this.Utils.open( template );
 	$('.cardio-card input:eq(0)').trigger('focus');
 };
@@ -343,7 +343,7 @@ App.test = function() {
 			vars.partial = this.partial;
 			return _.template( $(id).html(), vars );
 		}
-	});	
+	});
 	$('#test').html( template );
 };
 $(function() {
