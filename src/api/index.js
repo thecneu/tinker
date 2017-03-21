@@ -1,15 +1,11 @@
-import low from 'lowdb'
+import axios from 'axios'
 
-const exercises = low('data/exercises.json')
-exercises.defaults([]).write()
+const url = 'http://localhost:3001'
 
-const entries = low('data/entries.json')
-entries.defaults([]).write()
-
-export function getExercises() {
-  return exercises.get().value()
+export const getExercises = () => {
+  return axios.get(`${url}/exercises`).then(res => res.json())
 }
 
-export function getEntries() {
-  return entries.get().value()
+export const getEntries = () => {
+  return axios.get(`${url}/entries`).then(res => res.json())
 }
