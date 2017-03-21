@@ -8,7 +8,7 @@
 <body>
 
 <div id="overlay"></div>
-<div id="app"></div>	
+<div id="app"></div>
 <div id="test"></div>
 <script type="text/template" id="main-template">
 <div id="container">
@@ -20,7 +20,7 @@
 		<li class="day" data-id="<%= di %>">
 			<div class="dayName"><%= day %></div>
 			<div class="dayContent"></div>
-		</li>  
+		</li>
 	<% }); %>
 	</ul>
 </div>
@@ -51,7 +51,7 @@
 </script>
 
 <script type="text/template" id="exercise-template">
-<li data-id="<%= ei %>"> 
+<li data-id="<%= ei %>">
 	<div class="exname" data-title="<%= ex.name %>"><%= ex.name %></div>
 	<div class="sets"><%= ex.sets %> x <%= ex.reps %></div>
 	<div><img src="<%= ex.image %>" /></div>
@@ -90,7 +90,7 @@
 </script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://underscorejs.org/underscore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 <script src="js/shortcuttosize.js"></script>
 <script src="js/datastore.js"></script>
 <script src="js/app.js"></script>
