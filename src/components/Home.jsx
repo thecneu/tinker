@@ -5,7 +5,10 @@ import EntryForm from '../containers/EntryForm'
 const Home = () => (
   <article className="container">
     <EntryForm />
-    <button className="action"><Link to="/exercises" className="glyphicon glyphicon-th-list"></Link></button>
+
+    <aside className="action">
+      <button><Link to="/exercises" className="glyphicon glyphicon-th-list" /></button>
+    </aside>
   </article>
 )
 

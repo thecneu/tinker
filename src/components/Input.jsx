@@ -1,4 +1,5 @@
 import React from 'react'
+import './input.css'
 
 class Input extends React.Component {
   state = { className: '' }
@@ -9,12 +10,18 @@ class Input extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.setState({
+      className: this.props.defaultValue || this.props.value ? 'focused' : ''
+    })
+  }
+
   render() {
     const { required, name, label, defaultValue, onInputChange } = this.props
 
     return (
       <div className={('form-group ' + this.state.className).trim()}>
-        <label>{label}</label>
+        <label className="control-label">{label}</label>
         <input type="text"
           className="form-control"
           placeholder={label}

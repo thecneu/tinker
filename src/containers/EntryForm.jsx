@@ -45,14 +45,14 @@ class EntryForm extends React.Component {
 
     return (
       <form required onSubmit={this.onSubmit}>
-        <Select name="type" onChange={this.toggleUseCardio}>
+        <Select name="type" onInputChange={this.toggleUseCardio}>
           <option value="cardio">Cardio</option>
           <option value="exercise">Exercise</option>
         </Select>
-
+        {console.log()}
         {this.state.useCardio ? cardio : exercise}
 
-        <button type="submit">Create Entry</button>
+        <button type="submit" className="center-block btn btn-primary">Create Entry</button>
       </form>
     )
   }

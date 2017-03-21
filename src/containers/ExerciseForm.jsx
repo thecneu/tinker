@@ -5,6 +5,8 @@ import { getExercise } from '../reducers'
 import Input from '../components/Input'
 
 class ExerciseForm extends React.Component {
+  state = {}
+
   onSubmit(e) {
     const data = {
       name: this.state.name,
@@ -20,6 +22,11 @@ class ExerciseForm extends React.Component {
     this.props.saveExercise(data)
   }
 
+  onInputChange = (e) => {
+    const input = e.currentTarget
+    this.setState({[input.name]: input.value})
+  }
+
   render() {
     return(
       <form onSubmit={this.onSubmit}>
@@ -31,7 +38,7 @@ class ExerciseForm extends React.Component {
         <Input type="file" name="image" label="Animation" />
         {this.state.image ? <img src={this.state.image} alt="" /> : false}
         <Input onInputChange={this.onInputChange} name="videoUrl" label="Video URL" value={this.state.videoUrl} />
-        <button type="submit">Save</button>
+        <button type="submit" className="center-block btn btn-primary">Save</button>
       </form>
     )
   }
