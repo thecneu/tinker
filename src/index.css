@@ -86,7 +86,7 @@ header h1 span {
                 top: -8px;
                 display: block;
                 visibility: hidden;
-                background: url(button-close-overlay.png) no-repeat;
+                background: url('../assets/button-close-overlay.png') no-repeat;
                 width: 18px;
                 height: 18px;
                 background-size: 100%;

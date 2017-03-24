@@ -15,7 +15,7 @@ export const chest = 'Barbell Bench Press, Incline Barbell Bench Press, Dumbbell
 export const shoulders = 'Bent-Over Barbell Row, Barbell Shrug, Lat Pulldowns, Dumbbell Shrug, Lat Pulldowns, Hanging Row, Seated Cable Rows, Seated Rear Lateral Dumbbell Raises, Trap Bar Shrugs, Reverse Grip Lat Pulldowns'
 export const triceps = 'Close Grip Bench Press, Overhead Dumbbell Extensions, Tricep Dips, Seated One-Arm Dumbbell Tricep Extensions, Skull Crushers, Close Grip Dumbbell Press, Reverse Grip Cable Press Down, Overhead Cable Tricep Extensions, Lying Dumbbell French Press, Close Grip Push Up'
 
-export const routine = {
+export const exercises = {
 	phases: [{
 		number: 1,
 		title: 'Phase 1',
