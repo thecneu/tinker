@@ -2,114 +2,12 @@
 button {background: transparent; color: #fff; font-weight: bold; }
 button:hover {color:#ccc;}
 body {font: 14px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;}
-
-.clear {
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 0 3px #000;
-    background: #000;
-    color: #fff;
-}
-
-    .clear:hover {
-        box-shadow: 0 0 8px red;
-    }
-
-    .clear:active {
-        box-shadow: none;
-    }
+ul {padding: 0;}
 
 .container {
     width: 90%;
     margin: 0 auto;
 }
-
-header h1 {
-    margin-top: 23px;
-    margin-left: 8px;
-}
-
-header h1 span {
-    font-weight: 300;
-}
-
-.days {
-    width: 100%;
-    overflow: hidden;
-    margin: 8px 0;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    -webkit-user-select: none;
-    -moz-user-select: -moz-none;
-     user-select: none;
-}
-
-    .days li {
-        list-style:none;
-        float: left;
-        width: 14.28571428571429%;
-        text-align: center;
-        border-right: 1px solid #333;
-        font-size: 1.7em;
-        line-height: 1.4em;
-        text-transform: capitalize;
-    }
-
-        .days li:first-child {
-            border-left: 1px solid #333;
-        }
-
-        .days li > div:first-child {
-            border-bottom: 1px solid #333
-        }
-
-        .days .dayContent {
-            padding: 16px 4px;
-            height: 85%;
-        }
-            .days .dayContent .workout-title {
-                cursor: pointer;
-                font-size: 50%;
-                background: #1c1c1c;
-                color: #fcfcfc;
-                padding: 2px 4px;
-                margin-bottom: 15px;
-                border-radius: 4px;
-                position: relative;
-                height: 36px;
-                transition: all .15s ease-in;
-            }
-
-            .days .dayContent .workout-title .delete {
-                position: absolute;
-                right: -6px;
-                top: -8px;
-                display: block;
-                visibility: hidden;
-                background: url('../assets/button-close-overlay.png') no-repeat;
-                width: 18px;
-                height: 18px;
-                background-size: 100%;
-            }
-
-            .days .dayContent .workout-title:hover .delete {
-                visibility: visible;
-            }
-
-            .delete:hover {
-                color: red;
-            }
-
-            .days .dayContent .cardio-title .info.added {
-                position: relative;
-                margin-top: -8px;
-                text-transform: lowercase;
-                transition: height .15s ease-out;
-            }
-
-            .days .dayContent .cardio-title.added:hover {
-                height: 56px;
-            }
 
 .overlay {
     top: 0;

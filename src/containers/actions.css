@@ -1,0 +1,8 @@
+.actions {
+    position: fixed;
+    bottom: 23px;
+    right: 23px;
+}
+.actions .btn {
+    margin-right: 15px;
+}

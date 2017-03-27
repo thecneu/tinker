@@ -1,0 +1,76 @@
+.calendar {
+    width: 100%;
+    overflow: hidden;
+    margin: 8px 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    user-select: none;
+    padding: 0;
+}
+
+    .calendar li {
+        list-style:none;
+        float: left;
+        width: 14.28571428571429%;
+        text-align: center;
+        border-right: 1px solid #333;
+        font-size: 1.7em;
+        line-height: 1.4em;
+        text-transform: capitalize;
+    }
+
+        .calendar li:first-child {
+            border-left: 1px solid #333;
+        }
+
+        .calendar li > div:first-child {
+            border-bottom: 1px solid #333
+        }
+
+        .calendar .dayContent {
+            padding: 16px 4px;
+            height: 85%;
+        }
+            .calendar .dayContent .workout-title {
+                cursor: pointer;
+                font-size: 50%;
+                background: #1c1c1c;
+                color: #fcfcfc;
+                padding: 2px 4px;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                position: relative;
+                height: 36px;
+                transition: all .15s ease-in;
+            }
+
+            .calendar .dayContent .workout-title .delete {
+                position: absolute;
+                right: -6px;
+                top: -8px;
+                display: block;
+                visibility: hidden;
+                background: url('../../assets/button-close-overlay.png') no-repeat;
+                width: 18px;
+                height: 18px;
+                background-size: 100%;
+            }
+
+            .calendar .dayContent .workout-title:hover .delete {
+                visibility: visible;
+            }
+
+            .delete:hover {
+                color: red;
+            }
+
+            .calendar .dayContent .cardio-title .info.added {
+                position: relative;
+                margin-top: -8px;
+                text-transform: lowercase;
+                transition: height .15s ease-out;
+            }
+
+            .calendar .dayContent .cardio-title.added:hover {
+                height: 56px;
+            }

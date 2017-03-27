@@ -1,7 +1,7 @@
-import { weeknum } from './utils'
+import { getWeeknum } from '../utils'
 
 const initialState = {
-  startWeek: weeknum(),
+  startWeek: getWeeknum(),
   phase: 1,
   week: 1
 }

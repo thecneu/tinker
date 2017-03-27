@@ -1,5 +1,5 @@
 /* globals $ */
-export const weeknum = () => {
+export const getWeeknum = () => {
   const d = new Date()
   const dayNr = (d.getDay() + 6) % 7
   d.setDate(d.getDate() - dayNr + 3)
@@ -43,8 +43,9 @@ export const open = (el) => {
   $('#overlay').click(close)
 }
 
-export const normalize = (data) => {
+export const normalize = (data, phase, week) => {
   const exercises = []
+
   data.phases.forEach((phase) => {
     phase.weeks.forEach((week) => {
       week.workouts.forEach((workout) => {
@@ -52,10 +53,15 @@ export const normalize = (data) => {
           exercises.push({
             ...exercise,
             phase: phase.number,
-            week: week.number
+            week: week.number,
+            group: workout.title
           })
         })
       })
     })
+  })
+
+  return exercises.filter((exercise) => {
+    return exercise.phase === phase && exercise.week === week
   })
 }
