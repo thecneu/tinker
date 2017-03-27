@@ -1,4 +1,4 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 import { combineReducers } from 'redux'
 
 export const days = (state = [], action) => {
@@ -32,15 +32,31 @@ export const config = (state = {}, action) => {
         ...state,
         [action.payload.day]: {
           ...day,
-          cardio: [...day.cardio, action.payload.cardio]
+          cardio: [...day.cardio || [], action.payload.cardio]
         }
       }
 
     case 'REMOVE_GROUP_FROM_DAY':
-      return state
+    {
+      let { group, ...rest } = day
+
+      return {
+        ...state,
+        [action.payload.day]: rest
+      }
+    }
 
     case 'REMOVE_CARDIO_FROM_DAY':
-      return state
+    {
+      let { cardio, ...rest } = day
+      let newCardio = cardio.filter(c => c !== action.payload.cardio)
+      let newDay = newCardio.length ? { ...rest, cardio: newCardio } : { ...rest }
+
+      return {
+        ...state,
+        [action.payload.day]: newDay
+      }
+    }
 
     default:
       return state

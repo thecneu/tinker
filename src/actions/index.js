@@ -46,4 +46,14 @@ export const addCardioToDay = (cardio, day) => ({
   payload: { cardio, day }
 })
 
+export const removeGroupFromDay = (day) => ({
+  type: 'REMOVE_GROUP_FROM_DAY',
+  payload: { day }
+})
+
+export const removeCardioFromDay = (cardio, day) => ({
+  type: 'REMOVE_CARDIO_FROM_DAY',
+  payload: { cardio, day }
+})
+
 // 'RETRIEVE_SERVER_DATA'
