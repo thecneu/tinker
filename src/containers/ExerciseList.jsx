@@ -10,7 +10,7 @@ const List = ({items}) => (
     </thead>
     <tbody>
       {items.map(item => <tr>
-        {Object.keys(item).map(key => <td>key</td>)}
+        {Object.keys(item).map(key => <td>{/gif|png|jpg/.test(item[key]) ? <img src={item[key]} alt="" /> : item[key]}</td>)}
       </tr>)}
     </tbody>
   </table>

@@ -14,7 +14,7 @@
 }
 
 .focused .control-label {
-    font-size: 18px;
+    font-size: 16px;
     color: #337ab7;
     opacity: 1;
     transform: scale(0.75);

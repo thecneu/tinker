@@ -28,18 +28,21 @@ class EntryForm extends React.Component {
 
   onInputChange = (e) => {
     const input = e.currentTarget
-    this.setState({[input.name]: input.value})
+    console.log(input.value.replace(/a/g, ''))
+    this.setState({[input.name]: input.value.replace('a', '')})
   }
 
   render() {
     const cardio = [
-      <Input required onInputChange={this.onInputChange} key="time" name="time" label="Time"  />,
+      <Input required onInputChange={this.onInputChange} key="time" name="time" label="Time" type="number" />,
       <Input required onInputChange={this.onInputChange} key="distance" name="distance" label="Distance" />,
       <Input required onInputChange={this.onInputChange} key="calories" name="calories" label="Calories" />
     ]
 
     const exercise = [
-      <Select required onInputChange={this.onInputChange} name="exercise" label="Exercise" options={this.props.exercises} key="exercise" />,
+      <Select required onInputChange={this.onInputChange} name="exercise" label="Exercise" key="exercise">
+        {this.props.exercises.map(exercise => <option value={exercise.value} key={exercise.value}>{exercise.title}</option>)}
+      </Select>,
       <Input required onInputChange={this.onInputChange} name="weight" label="Weight" key="weight" />
     ]
 
@@ -49,7 +52,6 @@ class EntryForm extends React.Component {
           <option value="cardio">Cardio</option>
           <option value="exercise">Exercise</option>
         </Select>
-        {console.log()}
         {this.state.useCardio ? cardio : exercise}
 
         <button type="submit" className="center-block btn btn-primary">Create Entry</button>

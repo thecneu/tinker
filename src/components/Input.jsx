@@ -17,12 +17,12 @@ class Input extends React.Component {
   }
 
   render() {
-    const { required, name, label, defaultValue, onInputChange } = this.props
+    const { type, required, name, label, defaultValue, onInputChange } = this.props
 
     return (
       <div className={('form-group ' + this.state.className).trim()}>
         <label className="control-label">{label}</label>
-        <input type="text"
+        <input type={type || 'text'}
           className="form-control"
           placeholder={label}
           required={required}

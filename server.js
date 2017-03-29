@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const low = require('low')
+const fs = require('fs')
+const request = require('request')
+const low = require('lowdb')
 const db = low('db.json')
 const app = express()
 
@@ -20,6 +22,8 @@ const create = (type, state) => db.get(type).push(state)
 const updateById = (type, id, state) => db.get(type).find({id}).assign(state).write()
 const deleteById = (type, id) => db.get(type).remove({id}).write()
 
+const images = []
+let processImages = false
 
 app.get('/', (req, res) => {
   res.send(db.getState())
@@ -66,4 +70,26 @@ app.delete('/entries/:id', (req, res) => {
   res.send(req.body)
 })
 
+app.get('/download/:image', (req, res) => {
+  const image = decodeURIComponent(req.params.image)
+  images.push(image)
+
+  if (!processImages) {
+    goProcessImages()
+  }
+})
+
 app.listen(9000, () => console.log('server is listening'))
+
+function goProcessImages() {
+  let image
+  processImages = true
+  if (images.length > 0) {
+    image = images.pop()
+  }
+  request(image).pipe(fs.createWriteStream('assets/' + image.split('/').pop()))
+
+  if (images.length > 0) {
+    setTimeout(goProcessImages, 1420)
+  }
+}

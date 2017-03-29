@@ -7,30 +7,3 @@ body {
 button:focus {
   outline: 0;
 }
-
-.action {
-  position: fixed;
-  bottom: 42px;
-  right: 42px;
-}
-
-.action button {
-  font-size: 30px;
-  background: none;
-  border: none;
-  appearance: none;
-}
-
-.action a {
-  color: #337ab7;
-  text-decoration: none;
-}
-
-.action a:hover {
-  color: #286090;
-  text-decoration: none;
-}
-
-.action button:active a {
-  color: green;
-}

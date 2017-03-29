@@ -1,14 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
 import EntryForm from '../containers/EntryForm'
+import Action from '../components/Action'
 
 const Home = () => (
   <article className="container">
     <EntryForm />
-
-    <aside className="action">
-      <button><Link to="/exercises" className="glyphicon glyphicon-th-list" /></button>
-    </aside>
+    <Action path="/" />
   </article>
 )
 
