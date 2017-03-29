@@ -1,9 +1,6 @@
 import { exercises, entries } from './'
 import * as actions from '../actions'
 
-const
-
-
 describe('Testing Exercise Directory Reducers', () => {
   it('Initializes with initial state', () => {
     const prevState = undefined
@@ -12,6 +9,7 @@ describe('Testing Exercise Directory Reducers', () => {
 
     expect(nextState).toEqual(expectedState)
   })
+
   it('Adds new exercise', () => {
     const prevState = undefined
     const expectedState = [{
@@ -32,6 +30,22 @@ describe('Testing Exercise Directory Reducers', () => {
 
     expect(nextState).toEqual(expectedState)
   })
+
+  it('Updates an exercise', () => {
+    const prevState
+    const expectedState
+    const nextState = exercises(prevState, {})
+
+    expect(nextState).toEqual(expectedState)
+  })
+
+  it('Deletes an exercise', () => {
+    const prevState
+    const expectedState
+    const nextState = exercises(prevState, {})
+
+    expect(nextState).toEqual(expectedState)
+  })
 })
 
 describe('Testing Entries Reducers', () => {
@@ -45,12 +59,21 @@ describe('Testing Entries Reducers', () => {
 
   it('Adds new entry', () => {
     const prevState = undefined
+    const action = actions.addEntry({
+      type: 'cardio',
+      distance: 3,
+      calories: 420,
+      time: 42
+    })
     const expectedState = [{
-
+      type: 'cardio',
+      distance: 3,
+      calories: 420,
+      time: 42,
+      id: action.id,
+      date: action.date
     }]
-    const nextState = entries(prevState, actions.addEntry({
-
-    }))
+    const nextState = entries(prevState, action)
 
     expect(nextState).toEqual(expectedState)
   })

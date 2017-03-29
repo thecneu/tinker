@@ -5,8 +5,6 @@
       "type":"chest",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -15,8 +13,6 @@
       "type":"chest",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -25,8 +21,6 @@
       "type":"chest",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -35,8 +29,6 @@
       "type":"chest",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -45,8 +37,6 @@
       "type":"triceps",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -55,8 +45,6 @@
       "type":"triceps",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -65,8 +53,6 @@
       "type":"triceps",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -75,8 +61,6 @@
       "type":"triceps",
       "sets":4,
       "reps":"25-30",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -85,8 +69,6 @@
       "type":"triceps",
       "sets":4,
       "reps":"25-30",
-      "phase":1,
-      "week":1,
       "group":"Chest, Triceps, Calves"
    },
    {
@@ -95,8 +77,6 @@
       "type":"back",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -105,8 +85,6 @@
       "type":"back",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -115,8 +93,6 @@
       "type":"back",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -125,8 +101,6 @@
       "type":"biceps",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -135,8 +109,6 @@
       "type":"biceps",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -145,8 +117,6 @@
       "type":"biceps",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -155,8 +125,6 @@
       "type":"abs",
       "sets":4,
       "reps":"20-30",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -165,8 +133,6 @@
       "type":"abs",
       "sets":4,
       "reps":"20-30",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -175,8 +141,6 @@
       "type":"abs",
       "sets":4,
       "reps":"20-30",
-      "phase":1,
-      "week":1,
       "group":"Back, Biceps, Abs"
    },
    {
@@ -185,8 +149,6 @@
       "type":"shoulders",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -195,8 +157,6 @@
       "type":"shoulders",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -205,8 +165,6 @@
       "type":"shoulders",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -215,8 +173,6 @@
       "type":"shoulders",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -225,8 +181,6 @@
       "type":"traps",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -235,8 +189,6 @@
       "type":"calves",
       "sets":4,
       "reps":"25-30",
-      "phase":1,
-      "week":1,
       "group":"Shoulders, Traps, Calves"
    },
    {
@@ -245,8 +197,6 @@
       "type":"legs",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    },
    {
@@ -255,8 +205,6 @@
       "type":"legs",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    },
    {
@@ -265,8 +213,6 @@
       "type":"legs",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    },
    {
@@ -275,8 +221,6 @@
       "type":"legs",
       "sets":4,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    },
    {
@@ -285,8 +229,6 @@
       "type":"legs",
       "sets":3,
       "reps":"12-15",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    },
    {
@@ -295,8 +237,6 @@
       "type":"abs",
       "sets":3,
       "reps":"1min",
-      "phase":1,
-      "week":1,
       "group":"Legs and Abs"
    }
 ]

@@ -23,6 +23,9 @@ export const exercises = (state = initialState, action) => {
         return exercise
       })
 
+    case 'DELETE_EXERCISE':
+      return state.filter(exercise => exercise.id !== action.payload)
+
     default:
       return state
   }

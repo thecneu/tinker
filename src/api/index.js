@@ -1,6 +1,6 @@
 import axios from 'axios'
-import omit from 'lodash.omit'
 import cuid from 'cuid'
+import omit from 'lodash/omit'
 import data from './data.json'
 
 const url = 'http://localhost:9000'
@@ -21,6 +21,6 @@ export const importData = () => {
     exercise.id = cuid()
     exercise.image = `assets/${exercise.image.split('/').pop()}`
     // axios.get(`${url}/download/${encodeURIComponent(exercise.image)}`)
-    return omit(exercise, ['phase', 'week', 'group'])
+    return omit(exercise, ['group'])
   })
 }

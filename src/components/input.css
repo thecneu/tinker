@@ -36,3 +36,7 @@
 .focused .form-control::placeholder {
     color: #bbb;
 }
+
+[type=submit] {
+  margin-top: 42px;
+}
