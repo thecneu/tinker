@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Select = ({required, name, label, value, onInputChange, children}) => (
+const Select = ({label, onInputChange, children, ...props}) => (
   <div className="form-group">
-    <select className="form-control" name={name} value={value} required={required} onChange={onInputChange}>
+    <select className="form-control" onChange={onInputChange} {...props}>
       {label ? <option hidden>{label}</option> : false}
       {children}
     </select>

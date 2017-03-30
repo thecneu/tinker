@@ -2,11 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createEntry } from '../actions'
 import { getExerciseOptions } from '../reducers'
-import Input from '../components/Input'
+import Number from '../components/Number'
 import Select from '../components/Select'
 
 class EntryForm extends React.Component {
-  state = { useCardio: true }
+  initialState = {
+    useCardio: true,
+    time: '',
+    distance: '',
+    calories: '',
+    exercise: '',
+    weight: ''
+  }
+
+  state = { ...this.initialState }
 
   toggleUseCardio = () => this.setState({useCardio: !this.state.useCardio})
 
@@ -24,34 +33,39 @@ class EntryForm extends React.Component {
 
     e.preventDefault()
     this.props.createEntry(data)
+    this.reset()
   }
 
   onInputChange = (e) => {
     const input = e.currentTarget
-    console.log(input.value.replace(/a/g, ''))
-    this.setState({[input.name]: input.value.replace('a', '')})
+    this.setState({[input.name]: input.value})
+  }
+
+  reset() {
+    this.setState(this.initialState)
   }
 
   render() {
     const cardio = [
-      <Input required onInputChange={this.onInputChange} key="time" name="time" label="Time" type="number" />,
-      <Input required onInputChange={this.onInputChange} key="distance" name="distance" label="Distance" />,
-      <Input required onInputChange={this.onInputChange} key="calories" name="calories" label="Calories" />
+      <Number onInputChange={this.onInputChange} key="time" name="time" label="Time" value={this.state.time} />,
+      <Number needsPeriod onInputChange={this.onInputChange} key="distance" name="distance" label="Distance" value={this.state.distance} />,
+      <Number onInputChange={this.onInputChange} key="calories" name="calories" label="Calories" value={this.state.calories} />
     ]
 
     const exercise = [
       <Select required onInputChange={this.onInputChange} name="exercise" label="Exercise" key="exercise">
         {this.props.exercises.map(exercise => <option value={exercise.value} key={exercise.value}>{exercise.title}</option>)}
       </Select>,
-      <Input required onInputChange={this.onInputChange} name="weight" label="Weight" key="weight" />
+      <Number onInputChange={this.onInputChange} name="weight" label="Weight" key="weight" value={this.state.weight} />
     ]
 
     return (
-      <form required onSubmit={this.onSubmit}>
+      <form className="entry-form" onSubmit={this.onSubmit}>
         <Select name="type" onInputChange={this.toggleUseCardio}>
           <option value="cardio">Cardio</option>
           <option value="exercise">Exercise</option>
         </Select>
+
         {this.state.useCardio ? cardio : exercise}
 
         <button type="submit" className="center-block btn btn-primary">Create Entry</button>

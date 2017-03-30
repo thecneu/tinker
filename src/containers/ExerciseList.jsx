@@ -1,21 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import TableList from '../components/TableList'
 
-const List = ({items}) => (
-  <table className="table">
-    <thead>
-      <tr>
-        {Object.keys(items[0] || {}).map(item => <th>{item}</th>)}
-      </tr>
-    </thead>
-    <tbody>
-      {items.map(item => <tr>
-        {Object.keys(item).map(key => <td>{/gif|png|jpg/.test(item[key]) ? <img src={item[key]} alt="" /> : item[key]}</td>)}
-      </tr>)}
-    </tbody>
-  </table>
+const List = ({exercises}) => (
+  <TableList items={exercises} />
 )
 
-const mapStateToProps = ({exercises}) => ({items: exercises})
+const mapStateToProps = ({exercises}) => ({exercises})
 
 export default connect(mapStateToProps)(List)

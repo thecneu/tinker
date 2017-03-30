@@ -5,7 +5,7 @@
 }
 
 .action .btn {
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 15px;
 }
 
@@ -17,17 +17,23 @@
   right: 0;
 }
 
-html, body {
-  height: 100%;
-}
+@media (min-width: 768px) {
+  html, body {
+    height: 100%;
+  }
 
-#root {
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  #root {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.app {
-  flex: 1;
+  .app {
+    flex: 1;
+  }
+
+  .action .btn {
+    font-size: 25px;
+  }
 }

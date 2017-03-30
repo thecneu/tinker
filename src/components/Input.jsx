@@ -6,31 +6,30 @@ class Input extends React.Component {
 
   onBlurFocus = (e) => {
     this.setState({
-      className: e.type === 'focus' || e.currentTarget.value.length > 0 ? 'focused' : ''
+      className: ('form-group ' + (e.type === 'focus' || e.currentTarget.value.length > 0 ? 'focused' : '')).trim()
     })
   }
 
   componentDidMount() {
     this.setState({
-      className: this.props.defaultValue || this.props.value ? 'focused' : ''
+      className: ('form-group ' + (this.props.defaultValue || this.props.value ? 'focused' : '')).trim()
     })
   }
 
   render() {
-    const { type, required, name, label, defaultValue, onInputChange } = this.props
+    const { type = 'text', onInputChange, label, ...props } = this.props
 
     return (
-      <div className={('form-group ' + this.state.className).trim()}>
+      <div className={this.state.className}>
         <label className="control-label">{label}</label>
-        <input type={type || 'text'}
+        <input
           className="form-control"
+          type={type}
           placeholder={label}
-          required={required}
-          name={name}
-          defaultValue={defaultValue}
           onChange={onInputChange}
           onFocus={this.onBlurFocus}
-          onBlur={this.onBlurFocus} />
+          onBlur={this.onBlurFocus}
+          {...props} />
       </div>
     )
   }

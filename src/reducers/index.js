@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux'
-import { importData } from '../api'
 
-const initialState = importData()
-
-export const exercises = (state = initialState, action) => {
+export const exercises = (state = [], action) => {
   switch(action.type) {
     case 'CREATE_EXERCISE':
       return [

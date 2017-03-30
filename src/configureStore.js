@@ -1,15 +1,19 @@
-import { createStore } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
+import saveToServer from './middlewares/saveToServer'
 import reducer from './reducers'
 
-const configureStore = () => {
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const configureStore = (initialState) => {
   const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    initialState,
+    composeEnhancers(
+      applyMiddleware(saveToServer)
+    )
   )
 
   return store
 }
 
-const store = configureStore()
-
-export default store
+export default configureStore

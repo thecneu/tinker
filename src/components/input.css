@@ -1,6 +1,7 @@
 .form-group {
   display: flex;
   height: 55px;
+  margin-bottom: 42px;
 }
 
 .control-label {
@@ -11,6 +12,7 @@
   transform-origin: left top;
   transition: 240ms;
   font-weight: normal;
+  font-size: 20px;
 }
 
 .focused .control-label {
@@ -22,11 +24,14 @@
 
 .form-control {
   align-self: flex-end;
+  font-size: 20px;
+  text-align: center;
 }
 
 .form-control::placeholder {
   color: transparent;
   transition: 240ms;
+  text-align: left;
 }
 
 .form-control:focus::placeholder {
@@ -39,4 +44,18 @@
 
 [type=submit] {
   margin-top: 42px;
+}
+
+.entry-form {
+  margin-top: 12vh;
+}
+
+@media (min-width: 768px) {
+  .form-control {
+    font-size: 16px;
+  }
+
+  .entry-form {
+    margin-top: 0;
+  }
 }
