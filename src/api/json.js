@@ -7,4 +7,4 @@ export const get = () => axios.get(url)
 
 export const update = (data) => get().then((response) =>
     axios.put(url, JSON.stringify([...response.data, data]))
-)
+)export const loadInitialData = () => get().then(response => response.data)
