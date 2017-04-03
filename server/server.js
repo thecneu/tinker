@@ -4,10 +4,20 @@ const fs = require('fs')
 const axios = require('axios')
 const low = require('lowdb')
 const db = low('db.json')
+const data = require('./data.json')
+const request = require('request')
 const app = express()
+
+const allowCrossDomain = (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(allowCrossDomain);
 db.defaults({
   exercises: [],
   entries: []
@@ -35,24 +45,29 @@ const imageQueue = {
     let image = this.images.shift()
     let imagePath = `public/assets/${image.split('/').pop()}`
     this.started = true
+    // axios.get(image, {'content-type': 'stream'}).then(res => res.data).then(img => {
+    //   img.pipe(fs.createWriteStream(img))
+    //   this.download()
+    // })
     fs.open(imagePath, 'r', (err, fd) => {
       if (err) {
         if (err.code === 'ENOENT') {
-          axios.get(image, {'content-type': 'stream'}).then(res => res.data).then(img => {
-            img.pipe(fs.createWriteStream(img))
-            this.download()
-          })
+          console.log('Downloading: ', imagePath)
+
+          request(image).pipe(fs.createWriteStream(imagePath))
+          this.download()
         }
+      } else {
+        this.download()
       }
     })
   },
 
   add(url) {
     this.images.push(url)
-
-    if (!this.started) {
-      this.download()
-    }
+    // if (!this.started) {
+    //   this.download()
+    // }
   }
 }
 
@@ -101,9 +116,12 @@ app.delete('/entries/:id', (req, res) => {
   res.send(req.body)
 })
 
-app.get('/download/:image', (req, res) => {
-  const image = decodeURIComponent(req.params.image)
-  imageQueue.add(image)
+app.get('/download', (req, res) => {
+  data.forEach(exercise => {
+    imageQueue.add(exercise.image)
+  })
+  imageQueue.download()
+  res.send(imageQueue.images)
 })
 
 app.listen(9000, () => console.log('server is listening'))
