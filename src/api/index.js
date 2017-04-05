@@ -16,7 +16,7 @@ export const getEntries = () => {
 export const importData = () => {
   return data.map(exercise => {
     exercise.id = cuid()
-    exercise.image = `/assets/${exercise.image.split('/').pop()}`
+    exercise.image = `assets/${exercise.image.split('/').pop()}`
     return omit(exercise, ['group'])
   })
 }
