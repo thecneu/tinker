@@ -12,4 +12,3 @@ export const update = (data) => get().then((response) =>
 )
 
 export const loadInitialData = () => get().then(response => response.data)
-export { importData } from './index'

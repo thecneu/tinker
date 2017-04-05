@@ -2,9 +2,9 @@ import axios from 'axios'
 import cuid from 'cuid'
 import omit from 'lodash/omit'
 import data from '../../data/data.json'
+export { save, loadInitialData } from './json'
 
 const url = 'http://localhost:9000'
-
 export const getExercises = () => {
   return axios.get(`${url}/exercises`).then(res => res.json())
 }

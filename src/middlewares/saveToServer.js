@@ -1,4 +1,4 @@
-import { save } from '../api/json'
+import { save } from '../api'
 
 const saveToServer = ({dispatch, getState}) => (next) => (action) => {
   const nextState = next(action)

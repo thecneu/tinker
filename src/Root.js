@@ -2,15 +2,16 @@ import React from 'react'
 import { useBasename } from 'history'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App'
-import EntryForm from './containers/ExerciseForm'
+import EntryForm from './containers/EntryForm'
 import EntryList from './containers/EntryList'
 import ExerciseForm from './containers/ExerciseForm'
 import ExerciseList from './containers/ExerciseList'
 
+const history = process.env.NODE_ENV === 'development' ? browserHistory : useBasename(() => browserHistory)({basename: '/tinker'})
 const Root = () => (
-  <Router history={useBasename(() => browserHistory)({basename: '/tinker'})}>
+  <Router history={history}>
     <Route component={App}>
-      <IndexRoute component={EntryForm} />
+      <Route path="/" component={EntryForm} />
       <Route path="list" component={EntryList} />
       <Route path="directory">
         <IndexRoute component={ExerciseList} />

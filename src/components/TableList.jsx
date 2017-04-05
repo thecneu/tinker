@@ -1,6 +1,8 @@
 import React from 'react'
 
 const TableList = ({items, filter = ['id']}) => {
+  if (!items) return null
+
   const keys = Object.keys(items[0] || {}).filter((property) => filter.indexOf(property) < 0)
 
   return (
