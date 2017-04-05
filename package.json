@@ -28,7 +28,7 @@
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "serve": "nodemon server.js --watch server.js"
+    "serve": "nodemon server/server.js --watch server/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
