@@ -1,12 +1,14 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
+import Action from './components/Action'
+
 
 const App = ({children}) => (
-  <div className="app">
-    <main>
+  <main>
+    <Action />
+    <article className="container">
       {children}
-    </main>
-  </div>
+    </article>
+  </main>
 )
 
 export default App
