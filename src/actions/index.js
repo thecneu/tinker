@@ -29,3 +29,7 @@ export const createEntry = (entry) => ({
     ...entry
   }
 })
+
+export const clearEntries = () => ({
+  type: 'CLEAR_ENTRIES'
+})

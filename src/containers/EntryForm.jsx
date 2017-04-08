@@ -8,6 +8,7 @@ import Select from '../components/Select'
 class EntryForm extends React.Component {
   initialState = {
     useCardio: true,
+    errors: false,
     time: '',
     distance: '',
     calories: '',
@@ -15,11 +16,14 @@ class EntryForm extends React.Component {
     weight: ''
   }
 
-  state = { ...this.initialState }
+  state = this.initialState
 
   toggleUseCardio = () => this.setState({useCardio: !this.state.useCardio})
 
   onSubmit = (e) => {
+    e.preventDefault()
+
+    let errors = 0
     const data = this.state.useCardio ? {
       type: 'cardio',
       time: this.state.time,
@@ -31,9 +35,20 @@ class EntryForm extends React.Component {
       weight: this.state.weight
     }
 
-    e.preventDefault()
-    this.props.createEntry(data)
-    this.reset()
+    this.setState({errors: false})
+
+    Object.keys(data).forEach(key => {
+      if (data[key] === '') {
+        errors++
+      }
+    })
+
+    if (!errors) {
+      this.props.createEntry(data)
+      this.reset()
+    } else {
+      this.setState({errors: true})
+    }
   }
 
   onInputChange = (e) => {
@@ -60,14 +75,14 @@ class EntryForm extends React.Component {
     ]
 
     return (
-      <form className="entry-form" onSubmit={this.onSubmit}>
+      <form className="entry-form" onSubmit={this.onSubmit} noValidate>
         <Select name="type" onInputChange={this.toggleUseCardio}>
           <option value="cardio">Cardio</option>
           <option value="exercise">Exercise</option>
         </Select>
 
         {this.state.useCardio ? cardio : exercise}
-
+        {this.state.errors && <p className="text-danger text-center">Missing Fields</p>}
         <button type="submit" className="center-block btn btn-primary">Create Entry</button>
       </form>
     )

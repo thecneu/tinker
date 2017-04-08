@@ -12,7 +12,13 @@ class Input extends React.Component {
 
   componentDidMount() {
     this.setState({
-      className: ('form-group ' + (this.props.defaultValue || this.props.value ? 'focused' : '')).trim()
+      className: ('form-group ' + (this.props.value ? 'focused' : '')).trim()
+    })
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      className: ('form-group ' + (props.value ? 'focused' : '')).trim()
     })
   }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import TableListItem from './TableListItem';
 
 const TableList = ({items, filter = ['id']}) => {
   if (!items) return null
@@ -15,10 +16,8 @@ const TableList = ({items, filter = ['id']}) => {
       <tbody>
         {items.map(item =>
         <tr key={item.id}>
-          {keys.map(property =>
-            <td key={item[property]}>
-              {/gif|png|jpg/.test(item[property]) ? <img src={item[property]} alt="" /> : item[property]}
-            </td>
+          {keys.map((property, i) =>
+            <TableListItem key={`${item.id}-${i}`} property={property} value={item[property]} />
           )}
         </tr>)}
       </tbody>

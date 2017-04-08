@@ -36,6 +36,9 @@ export const entries = (state = [], action) => {
         { ...action.payload }
       ]
 
+    case 'CLEAR_ENTRIES':
+      return []
+
     default:
       return state
   }
